@@ -1,36 +1,42 @@
-📦 Supply Chain Demand & Inventory Analytics (End-to-End Project)
+📦 Supply Chain Demand & Inventory Analytics
+
+End-to-End Data Analytics Project
+
 📌 Project Overview
 
-This project is an end-to-end Supply Chain Analytics solution focused on demand planning, inventory performance, stock-out analysis, and business impact.
-It uses Python for data engineering, SQL for analytical KPIs, and Power BI for executive dashboards.
+This project analyzes supply chain demand, inventory levels, stock-outs, supplier performance, and revenue impact using Python, SQL, and Power BI.
 
-The objective is to help business stakeholders:
+The objective is to identify:
 
-Reduce stock-outs
+Demand–supply gaps
 
-Improve supplier performance
+Revenue loss due to stock-outs
 
-Optimize inventory across warehouses
+Supplier lead time impact
 
-Understand revenue loss due to supply gaps
+Warehouse performance
 
-🧰 Tools & Technologies
+Seasonal and regional demand patterns
 
-Python (Pandas, NumPy)
+This project simulates a real-world supply chain analytics scenario used by retail and manufacturing companies.
 
-MySQL
+🛠 Tools & Technologies
 
-SQL (CTEs, Window Functions, Aggregations)
+Python – Data cleaning & feature engineering
 
-SQLAlchemy
+Pandas & NumPy – Data manipulation
 
-Power BI
+MySQL – Data storage & analysis
 
-GitHub
+SQLAlchemy – Python–MySQL integration
 
-📊 Dataset Overview
+Power BI – Interactive dashboards
 
-Industry: Supply Chain & Operations
+GitHub – Version control & portfolio
+
+📂 Dataset
+
+Industry: Supply Chain & Inventory Management
 
 Rows: 50,000+
 
@@ -38,15 +44,15 @@ Key Columns:
 
 product
 
+region
+
+warehouse
+
 demand_units
 
 supply_units
 
-demand_supply_gap
-
 inventory_level
-
-stock_out_flag
 
 revenue
 
@@ -56,167 +62,163 @@ supplier
 
 lead_time_days
 
-warehouse
-
-region
+promotion
 
 season
 
-month_name
+stock_out_flag
 
-promotion
+🧹 Data Cleaning & Feature Engineering (Python)
 
-🐍 Python: Data Cleaning & Feature Engineering
-Key Steps
-
-Standardized column names
-
-Handled missing values
-
-Created business features:
+✔ Checked null values
+✔ Standardized column names
+✔ Created new features:
 
 demand_supply_gap
 
 stock_out_flag
 
-Removed redundant columns
+Lead time buckets
+✔ Removed redundant columns
+✔ Loaded cleaned data into MySQL
 
-Prepared analytics-ready dataset
+🗄 SQL Business Analysis
+Key KPIs
 
-Example Logic
-df['demand_supply_gap'] = df['demand_units'] - df['supply_units']
+Total demand, supply & gap
 
-df['stock_out_flag'] = np.where(
-    df['inventory_level'] < df['demand_units'],
-    'Yes',
-    'No'
-)
+Total revenue & profit
 
-🗄️ MySQL: Data Storage
+Stock-out percentage
 
-Loaded cleaned dataset into MySQL using SQLAlchemy
+Product-wise demand
 
-Table used for analysis: supply_chain
+Region-wise revenue
 
-df.to_sql(
-    name='supply_chain',
-    con=conn,
-    if_exists='replace',
-    index=False
-)
+Warehouse stock-outs
 
-📐 SQL: Business KPI Analysis
-Core KPIs Used for Power BI
+Top stock-out products
 
-Total Demand, Supply & Gap
+Monthly demand trend
 
-Total Revenue & Profit
+Seasonal demand
 
-Stock-out Percentage
+Monthly revenue trend
 
-Demand by Product
+Top 3 products per season
 
-Revenue by Region
+Supplier lead time ranking
 
-Stock-outs by Warehouse
+Lead time vs stock-out analysis
 
-Top Products Causing Stock-outs
+Excess inventory by warehouse
 
-Monthly Demand Trend
+Promotion impact on demand
 
-Seasonal Demand
-
-Monthly Revenue Trend
-
-Top 3 Products per Season
-
-Avg Lead Time by Supplier
-
-Lead Time vs Stock-outs
-
-Inventory by Warehouse
-
-Promotion Impact on Demand
-
-Revenue Loss Due to Stock-outs
-
-Example Query
-SELECT
-    SUM(demand_units) AS total_demand,
-    SUM(supply_units) AS total_supply,
-    SUM(demand_supply_gap) AS demand_supply_gap
-FROM supply_chain;
+Revenue loss due to stock-outs
 
 📊 Power BI Dashboards
 1️⃣ Executive Supply Chain Overview
 
-Total Revenue & Profit
+Total revenue
 
-Total Demand vs Supply
+Total profit
 
-Demand-Supply Gap
+Demand vs supply
 
-Stock-out Percentage
+Demand gap
 
-Revenue by Region
+Stock-out %
 
-Monthly Demand Trend
+Monthly demand trend
 
-Demand by Product
+Region-wise revenue
 
 2️⃣ Inventory & Warehouse Performance
 
-Stock-outs by Warehouse
+Stock-outs by warehouse
 
-Inventory Levels by Warehouse
+Total inventory per warehouse
 
-Stock-out Percentage
-
-Warehouse Comparison Table
+Stock-out percentage table
 
 3️⃣ Supplier & Business Impact
 
-Lead Time vs Stock-outs
+Lead time by supplier
 
-Avg Lead Time by Supplier
+Demand by promotion
 
-Revenue Loss Due to Stock-outs
+Revenue loss due to stock-outs
 
-Demand by Season & Product
+Seasonal product demand
 
-Promotion Impact on Demand
+🔍 Key Insights
 
-📈 Key Business Insights
+Significant revenue loss due to stock-outs
 
-High lead times directly increase stock-out risk
+Long lead times increase stock-out probability
 
-Certain warehouses face consistently higher stock-outs
+Promotions boost demand significantly
 
-Promotions significantly boost demand but increase supply risk
+Certain warehouses face frequent stock-outs
 
-Seasonal demand variation impacts inventory planning
+Seasonal demand patterns vary by product
 
-Stock-outs result in large revenue leakage
+Supplier lead time optimization needed
 
-💡 Business Recommendations
+📈 Business Recommendations
 
-Reduce supplier lead times for high-risk products
-
-Improve inventory buffers in high stock-out warehouses
-
-Align promotions with supply readiness
-
-Use seasonal demand forecasts for proactive planning
+✔ Optimize supplier lead time
+✔ Improve inventory forecasting
+✔ Increase safety stock for high-demand products
+✔ Smart promotions based on stock availability
+✔ Warehouse-level stock planning
 
 🎯 Skills Demonstrated
 
-✔ Python (Data Cleaning & Feature Engineering)
-✔ SQL (Advanced Analytics & KPIs)
-✔ Supply Chain Analytics
-✔ Power BI Dashboard Design
-✔ Business Insight Generation
+Data Cleaning (Python)
 
-👤 Author
+Feature Engineering
+
+Advanced SQL (CTEs, Window functions)
+
+Business KPI development
+
+Power BI dashboard design
+
+Data storytelling
+
+📁 Repository Structure
+📦 Supply-Chain-Analytics
+ ┣ 📂 data
+ ┃ ┗ supply_chain_dataset.csv
+ ┣ 📂 notebooks
+ ┃ ┗ data_cleaning.ipynb
+ ┣ 📂 sql
+ ┃ ┗ supply_chain_queries.sql
+ ┣ 📂 dashboards
+ ┃ ┗ powerbi.pbix
+ ┗ README.md
+
+🚀 How to Run
+
+Clone repository
+
+Run Python notebook
+
+Load cleaned data into MySQL
+
+Execute SQL queries
+
+Connect Power BI to MySQL
+
+Build dashboards
+
+👨‍💻 Author
 
 Daksh Makhija
-Data Analyst | Supply Chain Analytics | SQL | Python | Power BI
+Data Analyst | SQL | Python | Power BI
+
+⭐ If you like this project
+
+Give it a star ⭐ on GitHub
